@@ -1,0 +1,157 @@
+Nama: Seokapriyono Bilo
+Kelas: B (2023)
+NIM: 2309116095
+
+STRUKTUR:
+Sistem Manajemen ELearning
+│
+├── model
+│   ├── Course.java
+│   └── Student.java
+│
+└── main
+    └── Main.java
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+//Kelas Course
+
+package model;    
+/**
+ *
+ * @author Slimbook 14 R5
+ */
+public class Course {
+    private final String courseName;
+    private final String courseCode;
+    private final int credits;
+
+    // Constructor
+    public Course(String courseName, String courseCode, int credits) {
+        this.courseName = courseName;
+        this.courseCode = courseCode;
+        this.credits = credits;
+    }
+
+    // Method untuk menampilkan informasi kursus
+    public void displayCourseInfo() {
+        System.out.println("Course Name: " + courseName);
+        System.out.println("Course Code: " + courseCode);
+        System.out.println("Credits: " + credits);
+    }
+
+    // Getter untuk courseCode
+    public String getCourseCode() {
+        return courseCode;
+    }
+}
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+//Kelas Student
+
+package model; 
+/**
+ *
+ * @author Slimbook 14 R5
+ */
+public class Student {
+    private final String studentName;
+    private final String studentID;
+    private final String major;
+
+    // Constructor
+    public Student(String studentName, String studentID, String major) {
+        this.studentName = studentName;
+        this.studentID = studentID;
+        this.major = major;
+    }
+
+    // Method untuk menampilkan informasi mahasiswa
+    public void displayStudentInfo() {
+        System.out.println("Student Name: " + studentName);
+        System.out.println("Student ID: " + studentID);
+        System.out.println("Major: " + major);
+    }
+
+    // Getter untuk studentID
+    public String getStudentID() {
+        return studentID;
+    }
+}
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+//Kelas Main
+
+package com.mycompany.elearning;
+/**
+ *
+ * @author Slimbook 14 R5
+ */
+import model.Course;
+import model.Student;
+
+import java.util.ArrayList;
+import java.util.Scanner;
+
+public class ELearning {
+    private static final ArrayList<Course> courseList = new ArrayList<>();
+    private static final ArrayList<Student> studentList = new ArrayList<>();
+
+    public static void main(String[] args) {
+        try (Scanner scanner = new Scanner(System.in)) {
+            int choice;
+            
+            do {
+                System.out.println("Sistem Manajemen E-Learning");
+                System.out.println("1. Tambah Kursus");
+                System.out.println("2. Tambah Mahasiswa");
+                System.out.println("3. Tampilkan Semua Kursus");
+                System.out.println("4. Tampilkan Semua Mahasiswa");
+                System.out.println("5. Keluar");
+                System.out.print("Pilih opsi: ");
+                choice = scanner.nextInt();
+                scanner.nextLine(); // 
+                
+                switch (choice) {
+                    case 1 -> {
+                        System.out.print("Masukkan Nama Kursus: ");
+                        String courseName = scanner.nextLine();
+                        System.out.print("Masukkan Kode Kursus: ");
+                        String courseCode = scanner.nextLine();
+                        System.out.print("Masukkan Jumlah Kredit: ");
+                        int credits = scanner.nextInt();
+                        courseList.add(new Course(courseName, courseCode, credits));
+                    }
+                        
+                    case 2 -> {
+                        System.out.print("Masukkan Nama Mahasiswa: ");
+                        String studentName = scanner.nextLine();
+                        System.out.print("Masukkan ID Mahasiswa: ");
+                        String studentID = scanner.nextLine();
+                        System.out.print("Masukkan Jurusan: ");
+                        String major = scanner.nextLine();
+                        studentList.add(new Student(studentName, studentID, major));
+                    }
+                        
+                    case 3 -> {
+                        System.out.println("Daftar Kursus:");
+                        for (Course course : courseList) {
+                            course.displayCourseInfo();
+                            System.out.println("----------------------");
+                        }
+                    }
+                        
+                    case 4 -> {
+                        System.out.println("Daftar Mahasiswa:");
+                        for (Student student : studentList) {
+                            student.displayStudentInfo();
+                            System.out.println("----------------------");
+                        }
+                    }
+                        
+                    case 5 -> System.out.println("Keluar dari sistem.");
+                        
+                    default -> System.out.println("Pilihan tidak valid!");
+                }
+            } while (choice != 5);
+        }
+    }
+}
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
