@@ -1,20 +1,30 @@
 # Sistem Manajemen E-Learning untuk Institusi Pendidikan
 
-## Deskripsi
-Sistem Manajemen E-Learning ini dirancang untuk membantu institusi pendidikan dalam mengelola informasi tentang kursus dan mahasiswa. Program ini memungkinkan pengguna untuk menambah, menampilkan daftar kursus, serta menampilkan daftar mahasiswa.
+Fitur
+Menambah Kursus: Tambahkan kursus baru dengan nama, kode kursus, jumlah kredit, serta jenis kursus (Onsite/Online).
+Menambah Mahasiswa: Tambahkan mahasiswa baru dengan nama, ID, dan jurusan.
+Menampilkan Daftar Kursus: Menampilkan semua kursus yang sudah terdaftar.
+Menampilkan Daftar Mahasiswa: Menampilkan semua mahasiswa yang sudah terdaftar.
+Implementasi CRUD: Dapat melakukan operasi Create, Read, Update, dan Delete (CRUD) melalui interface CrudOperations.
 
-## Fitur
-- Tambah kursus dengan nama, kode, dan jumlah kredit.
-- Tambah mahasiswa dengan nama, ID, dan jurusan.
-- Tampilkan semua kursus yang telah ditambahkan.
-- Tampilkan semua mahasiswa yang telah ditambahkan.
-- Antarmuka pengguna berbasis teks sederhana.
+Struktur Proyek
+src/
+│
+├── com.mycompany.elearning/
+│   └── ELearning.java  - Main program untuk mengelola kursus dan mahasiswa
+│
+└── model/
+    ├── Course.java           - Kelas dasar untuk kursus (Base Class)
+    ├── OnsiteCourse.java      - Subclass untuk kursus yang dilakukan di tempat fisik (inherit dari Course)
+    ├── OnlineCourse.java      - Subclass untuk kursus online (inherit dari Course)
+    ├── Student.java           - Kelas untuk representasi mahasiswa
+    ├── UndergraduateStudent.java - Subclass dari Student untuk mahasiswa sarjana
+    ├── GraduateStudent.java   - Subclass dari Student untuk mahasiswa pascasarjana
+    ├── CrudOperations.java    - Interface untuk operasi CRUD (Create, Read, Update, Delete)
 
-## Struktur Proyek
-Proyek ini terdiri dari beberapa kelas yang dikelompokkan dalam dua package:
-1. **model**
-   - `Course`: Kelas ini merepresentasikan kursus dengan atribut nama, kode, dan kredit. Memiliki metode untuk menampilkan informasi kursus.
-   - `Student`: Kelas ini merepresentasikan mahasiswa dengan atribut nama, ID, dan jurusan. Memiliki metode untuk menampilkan informasi mahasiswa.
-
-2. **com.mycompany.elearning**
-   - `ELearning`: Kelas utama yang menjalankan aplikasi dan menangani interaksi pengguna.
+1. Menambah Kursus:
+Masukkan nama kursus, kode kursus, jumlah kredit, dan detail terkait (misalnya, platform untuk kursus online atau kelas untuk kursus onsite).
+2. Menambah Mahasiswa:
+Masukkan nama mahasiswa, ID mahasiswa, dan jurusan yang diambil.
+3. Menampilkan Semua Data:
+Anda dapat melihat daftar kursus atau mahasiswa yang sudah dimasukkan.
